@@ -1,71 +1,77 @@
 <?php
+namespace tutorial;
 
-$var1 = 2;
-$var2 = 3;
+echo __DIR__ . "</br>";
+echo __FILE__ . "</br>";
 
-$str = "Hello";
-$str .= " World!";
-
-if ($var2 < $var1) {
-    echo "This is bigger than 2";
-} else {
-    echo "Nope";
+function superfunction(){
+    echo __FUNCTION__."</br>";
 }
 
-echo ($var1===$var2) ? "SPAM" : "POTATO";
-
-$spam = $var1 <=> $var2;
-
-echo $spam;
-echo $str;
-
-$degree = 20;
-
-do {
-    echo "It is rather warm <br>";
-    $degree++;
-} while($degree<25);
-
-for($idx=10, $flag=0;$idx<=20;$idx+=2){
-    if($flag==0){
-        echo $idx.' ';
-        $flag = 0;
-    } else {
-        $flag = 0;
-        continue;
+class hyperClass{
+    public function echo_classname(){
+        echo __CLASS__."</br>";
+        echo __METHOD__."</br>";
     }
 }
 
-for ($col = 'A'; $col != 'AA'; $col++){
-    echo $col.' ';
+superfunction();
+
+$testObj = new hyperClass;
+$testObj -> echo_classname();
+
+echo __LINE__."<br/>";
+echo __NAMESPACE__."<br/>";
+
+$x = array("blue", "green", "orange");
+
+print_r($x);
+
+for($i=0;$i<count($x);$i++){
+    echo $x[$i]."<br>";
 }
-# WOW
+
+foreach($x as $val) {
+    echo $val."<br>";
+}
+
+foreach($x as $key => $value) {
+    echo "$key: $value</br>";
+}
+
+$super = array(1=>2, 5, 8, 3, "test");
+
+$flag = array_key_exists(0, $super);
+echo $flag;
+
+$flag = in_array(2, $super);
+echo $flag;
+
+$flag = array_keys($super);
+print_r($flag);
+
+$flag = array_values($super);
+print_r($flag);
+
+$super = array(2,5,8,3,9);
+print_r(rsort($super));
+print_r($super);
+
+$super = array(1=>2, 5=>5, 6=>8, 12=>3, 13=>9);
+print_r(asort($super));
+print_r($super);
+
+$super = array(1=>2, 5=>5, 6=>8, 12=>3, 2=>9);
+print_r(ksort($super));
+print_r($super);
 
 echo "<br>";
 
-$arr = array(111, 'blue', 'green');
-print_r($arr[0]);
+define("PI", 3.14);
+echo PI;
 
-$arr = [1,2,3,4,5];
-print_r($arr);
+function circle($radius){
+    echo PI * ($radius * $radius);
+}
 
-$arrX = array(0=>"TEST", 2=>"VALUE");
-print_r($arrX);
-
-$arrY = [1 => "KEY", 10 => "VALUE", 5 => "MID"];
-print_r($arrY);
-
-$arr = array('color_1' => 'red');
-print_r($arr);
-
-array_push($arrX, "NOPE");
-print_r($arrX);
-
-array_unshift($arrX, "NONE");
-print_r($arrX);
-
-array_pop($arrX);
-print_r($arrX);
-
-array_shift($arrX);
-print_r($arrX);
+circle(4);
